@@ -41,7 +41,7 @@ const material = new THREE.MeshStandardMaterial({map: woodTexture});
 const geometry = new THREE.BoxGeometry(1,1,1);
 const cube = new THREE.Mesh(geometry, material);
 cube.castShadow = true;
-cube.position.y=0;
+cube.position.set(1,0,0)
 
 scene.add(cube);
 scene.add(sphere);
@@ -56,7 +56,8 @@ function animate(){
     const elapsedTime = clock.getElapsedTime();
 
     cube.rotation.y= elapsedTime*0.5;
-    sphere.position.y = Math.sin(elapsedTime * 4) + 1.2;
+    sphere.position.x = Math.sin(elapsedTime*2)*3       ;
+    sphere.position.z = Math.cos(elapsedTime*2)*3;
 
     renderer.render(scene, camera);
 }
